@@ -1,6 +1,9 @@
-INSERT INTO cidades(nome_cidade) values 
-('Muriaé'),
-('Miradouro');
+INSERT INTO estados(nome_estado) values 
+('Minas Gerais');
+
+INSERT INTO cidades(nome_cidade, estado_id) values 
+('Muriaé', 1),
+('Miradouro', 1);
 
 INSERT INTO artistas(nome, telefone, email, pagina_web) values 
 ("Marília Mendonça", "(32) 9 9800-7364", "shows@mariliamendonça.com", "mariliamendonça.com.br"),
@@ -19,8 +22,8 @@ INSERT INTO precos(cachê, artista_id, tipo_evento_id) values
 (10000.00, 1, 1),
 (10000.00, 2, 1);
 
-INSERT INTO eventos(data_evento, localizacao, valor_ingresso, publico_maximo, tipo_evento_id) values 
-("2023-07-18 19:00:00", "Parque de Exposição Local", 150.55, 20000, 2);
+INSERT INTO eventos(data_evento, localizacao, valor_ingresso, publico_maximo, tipo_evento_id, cidade_id) values 
+("2023-07-18 19:00:00", "Parque de Exposição Local", 150.55, 20000, 2, 1);
 
 INSERT INTO artistas_eventos(artista_id, evento_id) values 
 (1, 1),

@@ -1,5 +1,4 @@
-from conection import *
-import pandas as pd
+from imports import *
 
 
 class QueryManager:
@@ -24,6 +23,15 @@ class QueryManager:
         except Error as err:
             print(f"Error: '{err}'")
 
+    def select_query(self, query):
+        try:
+            self.cursor.execute(query)
+            resultado = self.cursor.fetchone()
+            return resultado
+
+        except Error as err:
+            print(f"Error: '{err}'")
+
     def read_and_print_query(self, query, columns):
         result_query = self.read_query(query)
 
@@ -34,6 +42,3 @@ class QueryManager:
         data_frame = pd.DataFrame(results, columns=columns)
         print(data_frame)
 
-
-manager = QueryManager()
-manager.read_and_print_query("SELECT * FROM cidades", ["ID", "Cidade"])

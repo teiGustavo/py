@@ -1,5 +1,4 @@
-import mysql.connector
-from mysql.connector import Error
+from imports import *
 
 
 def create_db_connection(host_name, user_name, user_password, db_name):
@@ -17,4 +16,3 @@ def create_db_connection(host_name, user_name, user_password, db_name):
         print(f"Error: '{err}'")
 
     return connection
-

@@ -2,9 +2,19 @@ DROP SCHEMA IF EXISTS eventos;
 CREATE SCHEMA IF NOT EXISTS eventos;
 USE eventos;
 
+CREATE TABLE IF NOT EXISTS estados(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome_estado VARCHAR(30) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS cidades(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome_cidade VARCHAR(30) NOT NULL
+    nome_cidade VARCHAR(30) NOT NULL,
+    
+	estado_id INT NOT NULL,
+    CONSTRAINT fk_estados_cidades
+		FOREIGN KEY(estado_id)
+        REFERENCES estados(id)
 );
 
 CREATE TABLE IF NOT EXISTS artistas(
@@ -110,4 +120,10 @@ CREATE TABLE IF NOT EXISTS receitas(
 CREATE TABLE IF NOT EXISTS lucros(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     
-    evento_id INT NOT
+	evento_id INT NOT NULL,
+    CONSTRAINT fk_eventos_lucros
+		FOREIGN KEY(evento_id)
+        REFERENCES eventos(id),
+        
+    lucro DOUBLE
+)
